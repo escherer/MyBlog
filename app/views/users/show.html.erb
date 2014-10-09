@@ -1,0 +1,17 @@
+<h3><%= @user.name %></h3>
+<p>Location: <%= @user.location %></p>
+
+<h3><%= @user.name %>'s Posts</h3>
+<ol>
+<% @user.posts.each do |post| %>
+	<li><%= link_to post.post_title, post %></li>
+<% end %>
+</ol>
+<hr />
+<p>
+	<% if @user == current_user %>
+		<%= link_to 'Edit Your Profile', edit_user_path(@user) %> |
+	<% else %>
+	<% end %> 
+	<%= link_to 'Back to Users', users_path %>
+</p> 

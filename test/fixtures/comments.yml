@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  post_id: 1
+  comment_content: MyString
+  comment_date: MyString
+  comment_approved: false
+  comment_rank: 1
+
+two:
+  user_id: 1
+  post_id: 1
+  comment_content: MyString
+  comment_date: MyString
+  comment_approved: false
+  comment_rank: 1

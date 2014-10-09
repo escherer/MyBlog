@@ -1,0 +1,7 @@
+<h1>View Recent Articles</h1>
+<ul>
+<% @posts.each do |post| %>
+	<li><%= link_to post.post_title, post %></li>
+	<p><%= post.post_content %></p>
+<% end %>
+</ul>

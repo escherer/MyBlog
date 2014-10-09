@@ -1,0 +1,9 @@
+<h1><%= @comment.comment_content %></h1>
+<p>by <%= @post.user.name %></p>
+<p>
+	<% if !@post.comments.empty? %>
+  		<h2>Comments</h2>
+  		<%= render @comment %>
+	<% end %>
+
+</p>

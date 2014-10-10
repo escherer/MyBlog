@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
 		@comment = Comment.new(comment_params)
 		if @comment.save
 			flash[:notice] = "New Comment"
-			redirect_to "/posts/#{@comment.post_id}/comments"
+			redirect_to "/posts/#{post_id}"
 		else
 			flash[:notice] = "No comment for you"
 			render :new

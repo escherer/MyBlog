@@ -7,8 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<header>
-		<nav>
+<div id="wrapper">
+	 <div id="sidebar-wrapper">
+
 		<% if current_user %>
 			<%= "Hello #{current_user.name}" %>
 			<%= link_to "logout", logout_path, method: :delete %>
@@ -17,11 +18,20 @@
 			<%= link_to "Signup", new_user_path %>
 			<%= link_to "Signin", new_session_path %>
 		<% end %>
-		</nav>
-	</header>
+
 <%= flash[:notice] if flash[:notice] %>
 <%= flash[:alert] if flash[:alert] %>
-<%= yield %>
+	</div>
+	<div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+					<%= yield %>
+					</div>
+                </div>
+            </div>
+    </div>
+</div>
 
 </body>
 </html>

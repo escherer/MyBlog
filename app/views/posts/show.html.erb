@@ -1,5 +1,12 @@
 <h1><%= @post.post_title %></h1>
-<p><%= @post.post_content %></p>
+<p><%= raw(@post.post_content) %></p>
+<p>
+	<% if @post.user == current_user %>
+		<%= link_to 'edit post', edit_post_path(@post) %>
+	<% else %>
+	<% end %>
+
+</p>
 <h2>Comments</h2>
 <% if current_user %>
 			<p><%= link_to "Submit Comment", new_post_comment_path(@post) %></p>
@@ -12,10 +19,3 @@
 	<% end %>
 </ul>
 <p>by <%= @post.user.name %></p>
-<p>
-	<% if @post.user == current_user %>
-		<%= link_to 'edit post', edit_post_path(@post) %>
-	<% else %>
-	<% end %>
-
-</p>

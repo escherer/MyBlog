@@ -14,8 +14,8 @@
 			You must be logged in to comment.
 		<% end %>
 <ul>
-	<%= @post.comments.each do |comment| %>
-	<li><%= comment.comment_content %></li>
+	<% @post.comments.each do |comment| %>
+	<li><%= comment.comment_content %> by <p>by <%= link_to comment.user.name, user_comments_path(comment.user) %></p></li>
 	<% end %>
 </ul>
 <p>by <%= @post.user.name %></p>

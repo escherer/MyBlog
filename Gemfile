@@ -41,3 +41,5 @@ gem 'spring',        group: :development
 gem 'bootsy'
 
 gem 'mini_magick', '~> 3.8.1'
+
+gem 'rails-simple-search', '~> 0.9.8'

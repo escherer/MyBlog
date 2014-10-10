@@ -1,6 +1,8 @@
 <h1>View Recent Articles</h1>
 <% @posts.each do |post| %>
+<p style="margin-bottom: 60px">
 	<h2><%= link_to post.post_title, post %></h2>
-	<p><%= raw(post.post_content) %></p>
-	<i> <%= time_ago_in_words(post.created_at) %> ago</i>
+	<p><%= raw post.post_content.truncate(550) %></p>
+	<p><span class="glyphicon glyphicon-time"></span> <%= time_ago_in_words(post.created_at) %> ago by <%= link_to post.user.name, user_path(post.user) %></p>
+</p>
 <% end %>

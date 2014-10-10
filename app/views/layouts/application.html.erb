@@ -3,35 +3,137 @@
 <head>
   <title>Myblog</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href="/assets/css/blog-post.css" rel="stylesheet">
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div id="wrapper">
-	 <div id="sidebar-wrapper">
 
-		<% if current_user %>
-			<%= "Hello #{current_user.name}" %>
-			<%= link_to "logout", logout_path, method: :delete %>
-			<%= link_to "Compose a Post", new_post_path %>
-		<% else %>
-			<%= link_to "Signup", new_user_path %>
-			<%= link_to "Signin", new_session_path %>
-		<% end %>
 
-<%= flash[:notice] if flash[:notice] %>
-<%= flash[:alert] if flash[:alert] %>
-	</div>
-	<div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
+		
+
+	<!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar">Test1</span>
+                    <span class="icon-bar">Test2</span>
+                    <span class="icon-bar">Test3</span>
+                </button>
+                <a class="navbar-brand" href="/">MyBlog</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#"></a>
+                    </li>
+                    <li>
+                        <a href="#"></a>
+                    </li>
+                    <li>
+                        <a href="#"></a>
+                    </li>
+                    		<% if current_user %>
+								<li><%= link_to "logout", logout_path, method: :delete %></li>
+								<li><%= link_to "Compose a Post", new_post_path %></li>
+							<% else %>
+								<li><%= link_to "Signup", new_user_path %></li>
+								<li><%= link_to "Signin", new_session_path %></li>
+							<% end %>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <div class="container">
+        <div class="row">
+            <!-- Blog Post Content Column -->
+            <div class="col-lg-8">
+            	<p class="lead">
+                    <%= flash[:notice] if flash[:notice] %>
+					<%= flash[:alert] if flash[:alert] %>
+                </p>
 					<%= yield %>
-					</div>
+			</div>
+			<!-- Blog Sidebar Widgets Column -->
+            <div class="col-md-4">
+
+                <!-- Blog Search Well -->
+                <div class="well">
+                <% if current_user %>
+                    <p><%= "Hello #{current_user.name}" %></p>
+                <% else %>
+                <% end %>
+                    <h4>Blog Search</h4>
+                    <div class="input-group">
+                    <%= form_tag :controller => 'grants', :action => 'search', :method => 'get' do %>
+                    <%= text_field_tag :search, params[:search], :id => 'search_field' %>
+                    <%= submit_tag "Search", :name => nil %> 
+                    <%= link_to_function "Clear", "$('search_field').clear()" %>
+                    <% end %>
+
+                    </div>
+                    <!-- /.input-group -->
+                </div>
+
+                <!-- Blog Categories Well -->
+                <div class="well">
+                    <h4>Blog Categories</h4>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </div>
+
+                <!-- Side Widget Well -->
+                <div class="well">
+                    <h4>Side Widget Well</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+                </div>
+
+            </div>
+		</div>
+		 <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; MyBlog <%= Time.now.year %></p>
                 </div>
             </div>
-    </div>
-</div>
+            <!-- /.row -->
+        </footer>
+	</div>
+
 
 </body>
 </html>
